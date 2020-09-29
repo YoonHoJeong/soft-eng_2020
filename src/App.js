@@ -8,7 +8,7 @@ import Search from "routes/Search";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Router>
         <Header />
         <Switch>
@@ -23,7 +23,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </>
+    </div>
   );
 }
 

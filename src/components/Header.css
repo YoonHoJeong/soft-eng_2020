@@ -1,9 +1,17 @@
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
 
   width: 100%;
   height: 50px;
 
   display: flex;
+  z-index: 100;
+}
+
+.header__logo {
+  font-size: 45px;
+  font-weight: 600;
+  color: white;
+  padding: 30px;
 }
