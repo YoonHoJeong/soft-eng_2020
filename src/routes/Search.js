@@ -1,29 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Search.css";
+import qs from "qs";
 
 import SearchBar from "components/SearchBar";
 
-const Search = (props) => {
+const Search = () => {
   const location = useLocation();
   const [category, setCategory] = useState("all");
   const [text, setText] = useState("");
 
   useEffect(() => {
-    const {
-      state: { input },
-    } = location;
-
-    if (input) {
-      const { category: categoryVal, text: textVal } = input;
-      setCategory(categoryVal);
-      setText(textVal);
-    }
-    // console.log(searchInput);
-    // // setInterval(() => {
-    // //   console.log(input);
-    // // }, 1000);
-  }, [category, text]);
+    const { c, t } = qs.parse(location.search, { ignoreQueryPrefix: true });
+    setCategory(c);
+    setText(t);
+  }, [location]);
 
   return (
     <div className="search">

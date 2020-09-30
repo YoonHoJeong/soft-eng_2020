@@ -4,8 +4,6 @@ import SearchBar from "components/SearchBar";
 import "./Home.css";
 
 const Home = () => {
-  const searchPos = useState("below");
-
   return (
     <div className="home">
       <Header />
@@ -13,7 +11,7 @@ const Home = () => {
         <div className="home-image"></div>
         <div className="home-image-cover"></div>
       </div>
-      <SearchBar pos={searchPos} />
+      <SearchBar />
     </div>
   );
 };

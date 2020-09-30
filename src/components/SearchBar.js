@@ -4,19 +4,12 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
 import uuid from "react-uuid";
 
-const SearchBar = ({ searchPos }) => {
+const SearchBar = () => {
   const [input, setInput] = useState({ category: "all", text: "" });
-  const [pos, setPos] = useState("");
-
-  useEffect(() => {
-    setPos(searchPos);
-  }, []);
 
   const onChange = (e) => {
     setInput({ ...input, [e.target.name]: e.target.value });
   };
-
-  const randomGen = () => uuid();
 
   return (
     <div className="search-bar">
@@ -30,12 +23,7 @@ const SearchBar = ({ searchPos }) => {
       </div>
       <div className="search-bar__input">
         <input name="text" type="text" onChange={onChange} autoComplete="off" />
-        <Link
-          to={{
-            pathname: "/search",
-            state: { ...input },
-          }}
-        >
+        <Link to={`/search?c=${input.category}&t=${input.text}`}>
           <SearchIcon className="search-icon" />
         </Link>
       </div>
