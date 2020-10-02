@@ -2,9 +2,9 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "components/Header";
-import Category from "routes/Category";
 import Home from "routes/Home";
 import Search from "routes/Search";
+import Product from "components/Product";
 
 function App() {
   return (
@@ -18,8 +18,8 @@ function App() {
           <Route exact path="/search">
             <Search />
           </Route>
-          <Route exact path="/Category">
-            <Category />
+          <Route exact path="/product/:id">
+            <Product />
           </Route>
         </Switch>
       </Router>

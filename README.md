@@ -1,20 +1,31 @@
 # 2020-2학기 Software Engineering
 
 ## 웹 페이지 기능
+
 1. Search
-    - Tag 기반
-    - Category 기반
-    - 술 이름 기반
+   - Tag 기반
+   - Category 기반
+   - 술 이름 기반
 2. 제작한 REST API 사용
 3. 제공하는 정보
-    - 술 이름
-    - 기본 정보
-    - 평가
-    - 가격
-    - 댓글 - 리뷰
-    - 등록
+   - 술 이름
+   - 기본 정보
+   - 평가
+   - 가격
+   - 댓글 - 리뷰
+   - 등록
+
+## Components
+
+- SearchBar
+  - 모든 페이지에 적용
+  - search page로 query params와 함께 이동.
+- Header
+  - 모든 페이지에 적용
+  - 브랜드 마크(ALLA)
 
 ## Routes
+
 - [ ] Home
 - [ ] Search
 - [ ] Category
