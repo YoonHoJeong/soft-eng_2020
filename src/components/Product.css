@@ -1,4 +1,4 @@
-.back-screen {
+/* .back-screen {
   position: fixed;
   top: 0px;
   left: 0px;
@@ -6,4 +6,34 @@
   background: rgba(0, 0, 0, 0.56);
   overflow-x: hidden;
   overflow-y: scroll;
+} */
+
+.product {
+  display: flex;
+
+  position: absolute;
+  width: 700px;
+  height: 400px;
+  min-width: 500px;
+  padding: 25px;
+
+  background-color: white;
+}
+
+.product-image-container {
+  margin-right: 20px;
+}
+.product-image-container img {
+  width: 250px;
+  height: 250px;
+}
+.product-info {
+}
+
+.product button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 20px;
+  height: 20px;
 }

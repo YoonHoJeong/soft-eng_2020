@@ -23,6 +23,10 @@
   background: rgba(0, 0, 0, 0.56);
   overflow-x: hidden;
   overflow-y: scroll;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .whiteboard {
   width: 50%;

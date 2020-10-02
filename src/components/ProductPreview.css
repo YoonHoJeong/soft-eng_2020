@@ -2,9 +2,3 @@
   height: 180px;
   width: 180px;
 }
-
-.product {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}

@@ -18,8 +18,12 @@ const Search = () => {
   const [bsFlag, setBsFlag] = useState(false);
   const [clickedId, setClickedId] = useState("");
 
-  const onPreviewClick = (id) => {
+  const handleBSToggle = () => {
     setBsFlag(!bsFlag);
+  };
+
+  const onPreviewClick = (id) => {
+    handleBSToggle();
     setClickedId(id);
     // setClickedId(e.target);
   };
@@ -58,7 +62,10 @@ const Search = () => {
       {bsFlag && (
         <>
           <div className="backscreen">
-            <Product product={products[clickedId]} />
+            <Product
+              product={products[clickedId]}
+              onBGToggle={handleBSToggle}
+            />
           </div>
         </>
       )}
