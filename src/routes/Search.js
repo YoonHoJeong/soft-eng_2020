@@ -63,6 +63,7 @@ const Search = () => {
         <>
           <div className="backscreen">
             <Product
+              key={clickedId}
               product={products[clickedId]}
               onBGToggle={handleBSToggle}
             />

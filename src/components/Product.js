@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./Product.css";
 
 // product detail
 const Product = ({ product, onBGToggle }) => {
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          onBGToggle();
+        }
+      }
+
+      // Bind the event listener
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   return (
-    <div className="product">
+    <div ref={wrapperRef} className="product">
       <div className="product-image-container">
         <img
           className="product-image"
@@ -24,7 +47,11 @@ const Product = ({ product, onBGToggle }) => {
       </div>
 
       <div className="product-info">
-        <h4>술 먹고 쓴 리뷰들</h4>
+        <header className="product-header">
+          <h4>술 먹고 쓴 리뷰들</h4>
+          <div className="product-stars">★★★</div>
+        </header>
+        <br />
         <ul className="review-list">
           <li className="review-item">
             <div className="review-author">

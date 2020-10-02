@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link } from "react-router-dom";
-import uuid from "react-uuid";
 
 const SearchBar = () => {
   const [input, setInput] = useState({ category: "all", text: "" });
