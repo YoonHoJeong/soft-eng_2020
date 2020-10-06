@@ -7,6 +7,7 @@ import { dbService } from "fbase";
 import SearchBar from "components/SearchBar";
 import ProductPreview from "components/ProductPreview";
 import Product from "components/Product";
+import Loader from "components/Loader";
 
 const Search = () => {
   const location = useLocation();
@@ -17,6 +18,8 @@ const Search = () => {
 
   const [bsFlag, setBsFlag] = useState(false);
   const [clickedId, setClickedId] = useState("");
+
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleBSToggle = () => {
     setBsFlag(!bsFlag);
@@ -39,38 +42,45 @@ const Search = () => {
         ...doc.data(),
       }));
       setProducts(productList);
+      setIsLoading(false);
     });
   }, [location]);
 
   return (
-    <div className="search">
-      <header className="search-header">
-        {category} / {text} 검색 결과
-        <SearchBar />
-      </header>
-      <main className="search-main">
-        <div className="search-result">
-          {products.map((product) => (
-            <ProductPreview
-              key={product.id}
-              product={product}
-              onPreviewClick={onPreviewClick}
-            />
-          ))}
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className="search">
+          <header className="search-header">
+            {category} / {text} 검색 결과
+            <SearchBar />
+          </header>
+          <main className="search-main">
+            <div className="search-result">
+              {products.map((product) => (
+                <ProductPreview
+                  key={product.id}
+                  product={product}
+                  onPreviewClick={onPreviewClick}
+                />
+              ))}
+            </div>
+          </main>
+          {bsFlag && (
+            <>
+              <div className="backscreen">
+                <Product
+                  key={clickedId}
+                  product={products[clickedId]}
+                  onBGToggle={handleBSToggle}
+                />
+              </div>
+            </>
+          )}
         </div>
-      </main>
-      {bsFlag && (
-        <>
-          <div className="backscreen">
-            <Product
-              key={clickedId}
-              product={products[clickedId]}
-              onBGToggle={handleBSToggle}
-            />
-          </div>
-        </>
       )}
-    </div>
+    </>
   );
 };
 
