@@ -5,6 +5,7 @@ import Header from "components/Header";
 import Home from "routes/Home";
 import Search from "routes/Search";
 import Product from "components/Product";
+import GlobalStyles from "components/GlobalStyles";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <GlobalStyles />
     </div>
   );
 }
