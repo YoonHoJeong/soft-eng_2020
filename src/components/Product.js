@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Product.css";
 
 // product detail
@@ -23,55 +23,61 @@ const Product = ({ product, onBGToggle }) => {
     }, [ref]);
   }
 
+  const [rating, setRating] = useState(0);
+
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
+  const bgStyle = {
+    backgroundImage: `url(${product.image})`,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+  };
+
+  useEffect(() => {
+    let ratingSum = 0;
+    product.ratings.forEach((rating) => {
+      ratingSum += rating;
+    });
+    ratingSum /= product.ratings.length;
+    setRating(Math.floor(ratingSum * 10) / 10);
+  }, []);
+
   return (
     <div ref={wrapperRef} className="product">
-      <div className="product-image-container">
-        <img
-          className="product-image"
-          src={product.image}
-          alt={product.title}
-        />
-        <div>
-          <h4>
-            {product.title} / {product.type} / {product.degree}도
-          </h4>
-        </div>
-        <div className="tags">
-          {product.tags.map((tag) => (
-            <span className="tag">#{tag}</span>
-          ))}
-        </div>
-      </div>
+      <div className="product-image-container" style={bgStyle}></div>
 
       <div className="product-info">
-        <header className="product-header">
-          <h4>술 먹고 쓴 리뷰들</h4>
-          <div className="product-stars">★★★</div>
-        </header>
-        <br />
-        <ul className="review-list">
+        <h4 className="product-title">{product.title}</h4>
+        <div className="product-subtitle">
+          {product.type} · {product.degree}도 · {rating}점
+          <div className="product-stars">{}</div>
+        </div>
+
+        <ul className="reviews">
+          <h4>Reviews</h4>
+          <br />
           <li className="review-item">
-            <div className="review-author">
-              <strong>준식</strong>
-            </div>
+            <div className="review-author">준식</div>
             <div className="review-content">준식식 아무무 출동~!@</div>
           </li>
           <li className="review-item">
-            <div className="review-author">
-              <strong>준식</strong>
-            </div>
+            <div className="review-author">준식</div>
             <div className="review-content">준식식 아무무 출동~!@</div>
           </li>
           <li className="review-item">
-            <div className="review-author">
-              <strong>준식</strong>
-            </div>
+            <div className="review-author">준식</div>
             <div className="review-content">준식식 아무무 출동~!@</div>
           </li>
         </ul>
+        <div className="tags">
+          {product.tags.map((tag, index) => (
+            <span key={index} className="tag">
+              #{tag}
+            </span>
+          ))}
+        </div>
       </div>
       <button onClick={onBGToggle}>x</button>
     </div>

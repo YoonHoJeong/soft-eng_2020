@@ -7,6 +7,12 @@
   padding: 120px 120px;
 }
 
+.search-header {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
 .search-result {
   display: flex;
 }

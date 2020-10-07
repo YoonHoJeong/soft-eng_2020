@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductPreview.css";
 
 const ProductPreview = ({ product, onPreviewClick }) => {
   const handleClick = (id) => {
     onPreviewClick(product.id);
   };
+
+  const [rating, setRating] = useState(0);
+
+  useEffect(() => {
+    let ratingSum = 0;
+    product.ratings.forEach((rating) => {
+      ratingSum += rating;
+    });
+    ratingSum /= product.ratings.length;
+    setRating(Math.floor(ratingSum * 10) / 10);
+  }, []);
 
   return (
     <div className="product-preview" onClick={handleClick}>
@@ -16,7 +27,7 @@ const ProductPreview = ({ product, onPreviewClick }) => {
             {product.type} / {product.degree}도
           </div>
           <div className="preview_content__rating">
-            <p>4.5★</p>
+            <p>{rating}★</p>
           </div>
         </div>
       </div>
