@@ -1,14 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import qs from "qs";
 
 const SearchBar = () => {
-  const [input, setInput] = useState({ category: "all", text: "" });
+  const location = useLocation();
+  const [category, setCategory] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const onChange = (e) => {
-    setInput({ ...input, [e.target.name]: e.target.value });
+    const {
+      target: { name },
+    } = e;
+    const {
+      target: { value },
+    } = e;
+    if (name === "searchTerm") {
+      setSearchTerm(value);
+    } else if (name === "category") {
+      setCategory(value);
+    }
   };
+
+  useEffect(() => {
+    const { c, t } = qs.parse(location.search, {
+      ignoreQueryPrefix: true,
+    });
+    setCategory(c);
+    setSearchTerm(t);
+
+    // setInput({ category, text });
+  }, [location]);
   // handleSubmit = (event) => {
   //   // event가 발생했을 때 기본적으로 event를 인자로 가져온다.
   //   // submit event 발생 시 default로 page를 reload
@@ -59,9 +82,15 @@ const SearchBar = () => {
         </select>
       </div> */}
       <div className="search-bar__input">
-        <input name="text" type="text" onChange={onChange} autoComplete="off" />
+        <input
+          name="searchTerm"
+          type="text"
+          onChange={onChange}
+          autoComplete="off"
+          value={searchTerm}
+        />
 
-        <Link to={`/search?c=${input.category}&t=${input.text}`}>
+        <Link to={`/search?c=${category}&t=${searchTerm}`}>
           <SearchIcon className="search-icon" />
         </Link>
       </div>

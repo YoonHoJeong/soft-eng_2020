@@ -1,9 +1,10 @@
 .search-bar {
   display: flex;
   width: 40vw;
-  height: 40px;
+  height: fit-content;
   opacity: 0.4;
   max-width: 650px;
+  border-bottom: 1px solid black;
 }
 
 .search-bar__cate {

@@ -1,16 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
+import SearchBar from "components/SearchBar";
 
 const Header = () => {
+  const location = useLocation();
+  const style = { color: "white" };
+  const headerStyle = { padding: "0px 120px" };
   return (
-    <div className="header">
+    <div
+      className="header"
+      style={location.pathname === "/" ? null : headerStyle}
+    >
       <Link to="/">
-        <div className="header__logo">ALLA</div>
+        <div
+          className="header__logo"
+          style={location.pathname === "/" ? style : null}
+        >
+          ALLA
+        </div>
       </Link>
-      {/* <Link to="/">Home</Link>
-      <Link to="/Search">Search</Link>
-      <Link to="/">Category</Link> */}
+      {location.pathname !== "/" && <SearchBar />}
     </div>
   );
 };

@@ -52,10 +52,7 @@ const Search = () => {
         <Loader />
       ) : (
         <div className="search">
-          <header className="search-header">
-            {category} / {text} 검색 결과
-            <SearchBar />
-          </header>
+          <header className="search-header">검색 결과</header>
           <main className="search-main">
             <div className="search-result">
               {products.map((product) => (
