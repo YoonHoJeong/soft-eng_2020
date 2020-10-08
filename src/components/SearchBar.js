@@ -72,7 +72,10 @@ const SearchBar = () => {
   //   };
 
   return (
-    <div className="search-bar">
+    <div
+      className="search-bar"
+      style={location.pathname === "/" ? { borderBottom: "none" } : null}
+    >
       {/* <div className="search-bar__cate">
         <select name="category" id="category" onChange={onChange}>
           <option value="all">All</option>

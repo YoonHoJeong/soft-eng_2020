@@ -10,7 +10,7 @@ const Product = ({ product, onBGToggle }) => {
        */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          onBGToggle();
+          onBGToggle(false);
         }
       }
 
@@ -46,7 +46,15 @@ const Product = ({ product, onBGToggle }) => {
 
   return (
     <div ref={wrapperRef} className="product">
-      <div className="product-image-container" style={bgStyle}></div>
+      <div className="product-image-container" style={bgStyle}>
+        <div className="tags">
+          {product.tags.map((tag, index) => (
+            <span key={index} className="tag">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </div>
 
       <div className="product-info">
         <h4 className="product-title">{product.title}</h4>
@@ -59,27 +67,35 @@ const Product = ({ product, onBGToggle }) => {
           <h4>Reviews</h4>
           <br />
           <li className="review-item">
+            <div className="review-image-container">
+              <img src="" alt="" />
+            </div>
             <div className="review-author">준식</div>
             <div className="review-content">준식식 아무무 출동~!@</div>
           </li>
           <li className="review-item">
+            <div className="review-image-container">
+              <img src="" alt="" />
+            </div>
             <div className="review-author">준식</div>
             <div className="review-content">준식식 아무무 출동~!@</div>
           </li>
           <li className="review-item">
+            <div className="review-image-container">
+              <img src="" alt="" />
+            </div>
             <div className="review-author">준식</div>
             <div className="review-content">준식식 아무무 출동~!@</div>
           </li>
         </ul>
-        <div className="tags">
-          {product.tags.map((tag, index) => (
-            <span key={index} className="tag">
-              #{tag}
-            </span>
-          ))}
-        </div>
       </div>
-      <button onClick={onBGToggle}>x</button>
+      <button
+        onClick={() => {
+          onBGToggle(false);
+        }}
+      >
+        x
+      </button>
     </div>
   );
 };

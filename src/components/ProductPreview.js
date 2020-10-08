@@ -19,16 +19,18 @@ const ProductPreview = ({ product, onPreviewClick }) => {
 
   return (
     <div className="product-preview" onClick={handleClick}>
-      <img className="preview-image" src={product.image} alt={product.title} />
+      <div className="preview-image-container">
+        <img
+          className="preview-image"
+          src={product.image}
+          alt={product.title}
+        />
+        <div className="product-rating">{rating}★</div>
+      </div>
       <div className="preview-info">
         <div className="preview-title">{product.title}</div>
-        <div className="preview-content">
-          <div className="preview-content__basic">
-            {product.type} / {product.degree}도
-          </div>
-          <div className="preview_content__rating">
-            <p>{rating}★</p>
-          </div>
+        <div className="preview-subtitle">
+          {product.type} / {product.degree}도
         </div>
       </div>
     </div>

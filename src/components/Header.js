@@ -6,11 +6,15 @@ import SearchBar from "components/SearchBar";
 const Header = () => {
   const location = useLocation();
   const style = { color: "white" };
-  const headerStyle = { padding: "0px 120px" };
+  const homeHeaderStyle = {
+    backgroundColor: "transparent",
+    borderBottom: "none",
+    padding: "0px 30px",
+  };
   return (
     <div
       className="header"
-      style={location.pathname === "/" ? null : headerStyle}
+      style={location.pathname === "/" ? homeHeaderStyle : null}
     >
       <Link to="/">
         <div

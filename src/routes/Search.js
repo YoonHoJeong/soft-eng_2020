@@ -6,6 +6,7 @@ import { dbService } from "fbase";
 
 import SearchBar from "components/SearchBar";
 import ProductPreview from "components/ProductPreview";
+import ReviewPreview from "components/ReviewPreview";
 import Product from "components/Product";
 import Loader from "components/Loader";
 
@@ -14,6 +15,8 @@ const Search = () => {
   const [category, setCategory] = useState("all");
   const [text, setText] = useState("");
 
+  const [reviews, setReviews] = useState([]);
+
   const [products, setProducts] = useState([]);
 
   const [bsFlag, setBsFlag] = useState(false);
@@ -21,12 +24,12 @@ const Search = () => {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleBSToggle = () => {
-    setBsFlag(!bsFlag);
+  const handleBSToggle = (flag) => {
+    setBsFlag(flag);
   };
 
   const onPreviewClick = (id) => {
-    handleBSToggle();
+    handleBSToggle(true);
     setClickedId(id);
     // setClickedId(e.target);
   };
@@ -42,16 +45,24 @@ const Search = () => {
         ...doc.data(),
       }));
       setProducts(productList);
+    });
+    dbService.collection("review").onSnapshot((snapshot) => {
+      const reviewList = snapshot.docs.map((doc, index) => ({
+        id: index,
+        ...doc.data(),
+      }));
+      setReviews(reviewList);
       setIsLoading(false);
+      console.log(reviewList);
     });
   }, [location]);
 
   return (
-    <>
+    <div className="search">
       {isLoading ? (
         <Loader />
       ) : (
-        <div className="search">
+        <>
           <header className="search-header">검색 결과</header>
           <main className="search-main">
             <div className="search-result">
@@ -63,21 +74,25 @@ const Search = () => {
                 />
               ))}
             </div>
+            <hr />
+            <div className="search-reviews">
+              {reviews.map((review) => (
+                <ReviewPreview key={review.id} review={review} />
+              ))}
+            </div>
           </main>
           {bsFlag && (
-            <>
-              <div className="backscreen">
-                <Product
-                  key={clickedId}
-                  product={products[clickedId]}
-                  onBGToggle={handleBSToggle}
-                />
-              </div>
-            </>
+            <div className="backscreen">
+              <Product
+                key={clickedId}
+                product={products[clickedId]}
+                onBGToggle={handleBSToggle}
+              />
+            </div>
           )}
-        </div>
+        </>
       )}
-    </>
+    </div>
   );
 };
 

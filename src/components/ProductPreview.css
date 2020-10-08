@@ -1,62 +1,64 @@
 .product-preview {
-  width: 300px;
-  height: 380px;
-  background-color: white;
-  border-radius: 20px;
+  width: 28%;
+  height: fit-content;
+  min-width: 250px;
+  max-width: 350px;
+  /* background-color: white;
+  border-radius: 20px; */
   margin-right: 30px;
 
   position: relative;
-  flex-shrink: 0;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  opacity: 0.9;
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); */
+  /* opacity: 0.9; */
 }
 
 .product-preview:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-
+  opacity: 0.7;
   transform: translate(-3px, -3px);
   cursor: pointer;
   transition: all 0.3s;
 }
 
+.preview-image-container {
+  position: relative;
+
+  width: 100%;
+  height: fit-content;
+}
+
 .preview-image {
   width: 100%;
-  position: absolute;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  border-radius: 10px;
 }
 
 .preview-info {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
+  position: relative;
 
   width: 100%;
-  height: 42%;
-  padding: 25px;
+  height: fit-content;
+  padding: 12px 20px;
 
-  border-bottom-left-radius: 20px;
+  /* border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 
-  background-color: white;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white; */
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }
 
 .preview-info .preview-title {
-  font-size: 1.2em;
-  margin-bottom: 15px;
+  font-size: 1em;
+  margin-right: 5px;
   font-weight: 600;
 }
 
-.preview-info .preview-content {
-  font-size: 1em;
+.preview-info .preview-subtitle {
+  font-size: 0.9em;
+  opacity: 0.6;
 }
 
-.preview-content .preview-content__basic {
-}
-
-.preview-content .preview_content__rating {
+.product-rating {
   width: 55px;
   height: 25px;
   display: flex;
@@ -71,6 +73,6 @@
   font-weight: 600;
 
   position: absolute;
-  bottom: 25px;
-  left: 25px;
+  bottom: 15px;
+  right: 15px;
 }
