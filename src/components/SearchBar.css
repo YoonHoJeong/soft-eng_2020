@@ -15,9 +15,12 @@
   padding: 10px;
   border: none;
   font-size: 1.1em;
-  background-color: black;
-  color: white;
   outline: none;
+  text-align: center;
+}
+
+.search-bar__cate select option {
+  text-align: center;
 }
 .search-bar__input {
   flex: 1;

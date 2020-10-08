@@ -9,6 +9,7 @@ import ProductPreview from "components/ProductPreview";
 import ReviewPreview from "components/ReviewPreview";
 import Product from "components/Product";
 import Loader from "components/Loader";
+import SideBar from "components/SideBar";
 
 const Search = () => {
   const location = useLocation();
@@ -23,6 +24,17 @@ const Search = () => {
   const [clickedId, setClickedId] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
+
+  const [categoryList, setCategoryList] = useState([]);
+
+  const onChangeCategory = ({ target: { checked, name } }) => {
+    if (checked) {
+      setCategoryList(categoryList.concat(name));
+    } else {
+      setCategoryList(categoryList.filter((category) => category !== name));
+    }
+    console.log(categoryList);
+  };
 
   const handleBSToggle = (flag) => {
     setBsFlag(flag);
@@ -53,7 +65,6 @@ const Search = () => {
       }));
       setReviews(reviewList);
       setIsLoading(false);
-      console.log(reviewList);
     });
   }, [location]);
 
@@ -63,24 +74,40 @@ const Search = () => {
         <Loader />
       ) : (
         <>
-          <header className="search-header">검색 결과</header>
-          <main className="search-main">
-            <div className="search-result">
-              {products.map((product) => (
-                <ProductPreview
-                  key={product.id}
-                  product={product}
-                  onPreviewClick={onPreviewClick}
-                />
-              ))}
-            </div>
-            <hr />
-            <div className="search-reviews">
-              {reviews.map((review) => (
-                <ReviewPreview key={review.id} review={review} />
-              ))}
-            </div>
-          </main>
+          <SideBar
+            selectedCate={category}
+            onChangeCategory={onChangeCategory}
+          />
+          <ul className="products-container">
+            <li className="product-list-container">
+              <h4 className="container-title">
+                {category}
+                {text && "-" + text}에 대한 {products.length}개의 검색 결과
+              </h4>
+              <div className="product-list">
+                {products.map((product) => (
+                  <ProductPreview
+                    key={product.id}
+                    product={product}
+                    onPreviewClick={onPreviewClick}
+                  />
+                ))}
+              </div>
+            </li>
+            <li className="product-list-container">
+              <h4 className="container-title">이런 {category} 어때요?</h4>
+              <div className="product-list">
+                {products.map((product) => (
+                  <ProductPreview
+                    key={product.id}
+                    product={product}
+                    onPreviewClick={onPreviewClick}
+                  />
+                ))}
+              </div>
+            </li>
+          </ul>
+
           {bsFlag && (
             <div className="backscreen">
               <Product

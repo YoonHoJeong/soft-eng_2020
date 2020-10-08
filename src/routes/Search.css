@@ -1,20 +1,32 @@
 .search {
-  position: absolute;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgba(0, 0, 0, 0.05);
   width: 100%;
-  height: 100vh;
-  padding: 120px 120px;
+  height: 100%;
+  padding-top: 100px;
+
+  margin-top: 10px;
+
+  display: flex;
+}
+.products-container {
+  width: 100%;
+  padding-left: 10px;
+}
+.product-list-container {
+  background-color: white;
+  padding: 30px;
+
+  margin-bottom: 10px;
 }
 
-.search-header {
+.container-title {
   font-size: 1.1em;
   font-weight: 600;
-  margin-bottom: 20px;
 }
 
-.search-result {
+.product-list {
   display: flex;
+  margin-top: 30px;
 }
 
 .backscreen {

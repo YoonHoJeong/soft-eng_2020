@@ -3,11 +3,14 @@ import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link, useLocation } from "react-router-dom";
 import qs from "qs";
+import { useSelector } from "react-redux";
 
 const SearchBar = () => {
   const location = useLocation();
   const [category, setCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+
+  const defaultCates = useSelector((state) => state.categories);
 
   const onChange = (e) => {
     const {
@@ -76,14 +79,16 @@ const SearchBar = () => {
       className="search-bar"
       style={location.pathname === "/" ? { borderBottom: "none" } : null}
     >
-      {/* <div className="search-bar__cate">
+      <div className="search-bar__cate">
         <select name="category" id="category" onChange={onChange}>
           <option value="all">All</option>
-          <option value="beer">Beer</option>
-          <option value="soju">Soju</option>
-          <option value="wine">Wine</option>
+          {defaultCates.map((cate, index) => (
+            <option key={index} value={cate}>
+              {cate}
+            </option>
+          ))}
         </select>
-      </div> */}
+      </div>
       <div className="search-bar__input">
         <input
           name="searchTerm"
