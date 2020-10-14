@@ -6,6 +6,7 @@
   align-items: center;
   height: 100vh;
   width: 100%;
+  font-family: "NanumSquareRound", sans-serif;
 }
 .home-image-container {
   position: absolute;

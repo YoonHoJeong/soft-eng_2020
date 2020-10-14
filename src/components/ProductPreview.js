@@ -44,11 +44,11 @@ const ProductPreview = ({ product, onPreviewClick }) => {
         <div className="preview-statistics">
           <div className="preview-comments">
             <MessageIcon fontSize="small" className="grey icon" onMouseOver={handleHover}/>
-            <div class="font-cnts grey"><p>0</p></div>
+            <div className="font-cnts grey"><p>0</p></div>
           </div>
           <div className="preview-ratings">
             <StarIcon fontSize="small" className="grey icon" onMouseOver={handleHover}/>
-            <div class="font-cnts grey"><p>54</p></div>
+            <div className="font-cnts grey"><p>54</p></div>
           </div>
         </div>
       </div>

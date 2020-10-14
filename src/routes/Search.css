@@ -10,6 +10,7 @@
 
   display: flex;
   flex-direction: column;
+  font-family: "NanumSquareRound", sans-serif;
 }
 
 .search-bar-container {

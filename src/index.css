@@ -14,9 +14,29 @@
   font-weight: 700;
 } */
 
-@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url(/fonts/NanumSquareRoundL.ttf) format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url(/fonts/NanumSquareRoundR.ttf) format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url(/fonts/NanumSquareRoundB.ttf) format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "NanumSquareRound";
+  src: url(/fonts/NanumSquareRoundEB.ttf) format("truetype");
+  font-weight: 800;
+}
 
 body {
-  font-family: "NanumSquare", sans-serif;
+  font-family: "NanumSquareRound", "NanumSquare", sans-serif;
+
   background-color: rgba(0, 0, 0, 0.05);
 }
