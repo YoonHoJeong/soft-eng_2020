@@ -9,7 +9,6 @@ import ProductPreview from "components/ProductPreview";
 import ReviewPreview from "components/ReviewPreview";
 import Product from "components/Product";
 import Loader from "components/Loader";
-import SideBar from "components/SideBar";
 
 const Search = () => {
   const location = useLocation();
@@ -74,39 +73,37 @@ const Search = () => {
         <Loader />
       ) : (
         <>
-          <SideBar
-            selectedCate={category}
-            onChangeCategory={onChangeCategory}
-          />
-          <ul className="products-container">
-            <li className="product-list-container">
-              <h4 className="container-title">
-                {category}
-                {text && "-" + text}에 대한 {products.length}개의 검색 결과
-              </h4>
-              <div className="product-list">
-                {products.map((product) => (
-                  <ProductPreview
-                    key={product.id}
-                    product={product}
-                    onPreviewClick={onPreviewClick}
-                  />
-                ))}
-              </div>
-            </li>
-            <li className="product-list-container">
-              <h4 className="container-title">이런 {category} 어때요?</h4>
-              <div className="product-list">
-                {products.map((product) => (
-                  <ProductPreview
-                    key={product.id}
-                    product={product}
-                    onPreviewClick={onPreviewClick}
-                  />
-                ))}
-              </div>
-            </li>
-          </ul>
+          <div className="search-bar-container">
+            <SearchBar className="search-bar"/>
+          </div>
+          
+          <div className="products-container">
+            <h1 className="container-title">
+              검색 결과
+            </h1>
+            <span className="container-subtitle">총 {products.length}건의 {text} 결과</span>
+            <div className="products search-result">
+              {products.map((product) => (
+                <ProductPreview
+                  key={product.id}
+                  product={product}
+                  onPreviewClick={onPreviewClick}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="products-container">
+            <h1 className="container-title">#이런 술은 어때요?</h1>
+            <div className="products">
+              {products.map((product) => (
+                <ProductPreview
+                  key={product.id}
+                  product={product}
+                  onPreviewClick={onPreviewClick}
+                />
+              ))}
+            </div>
+          </div>
 
           {bsFlag && (
             <div className="backscreen">

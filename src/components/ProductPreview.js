@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./ProductPreview.css";
+import MessageIcon from '@material-ui/icons/Message';
+import StarIcon from '@material-ui/icons/Star';
 
 const ProductPreview = ({ product, onPreviewClick }) => {
   const handleClick = (id) => {
@@ -7,6 +9,10 @@ const ProductPreview = ({ product, onPreviewClick }) => {
   };
 
   const [rating, setRating] = useState(0);
+
+  const handleHover = (e) => {
+    console.log(e);
+  }
 
   useEffect(() => {
     let ratingSum = 0;
@@ -27,10 +33,23 @@ const ProductPreview = ({ product, onPreviewClick }) => {
         />
         <div className="product-rating">{rating}★</div>
       </div>
-      <div className="preview-info">
-        <div className="preview-title">{product.title}</div>
-        <div className="preview-subtitle">
-          {product.type} / {product.degree}도
+      <div className="info-container">
+
+        <div className="preview-info">
+          <div className="preview-title">{product.title}</div>
+          <div className="preview-subtitle">
+            {product.type} / {product.degree}도
+          </div>
+        </div>
+        <div className="preview-statistics">
+          <div className="preview-comments">
+            <MessageIcon fontSize="small" className="grey icon" onMouseOver={handleHover}/>
+            <div class="font-cnts grey"><p>0</p></div>
+          </div>
+          <div className="preview-ratings">
+            <StarIcon fontSize="small" className="grey icon" onMouseOver={handleHover}/>
+            <div class="font-cnts grey"><p>54</p></div>
+          </div>
         </div>
       </div>
     </div>
