@@ -71,7 +71,6 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      
       <Link to="/">
         <Logo>
           ALLA
