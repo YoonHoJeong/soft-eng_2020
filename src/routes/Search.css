@@ -16,11 +16,10 @@
 .search-bar-container {
   position: absolute;
   top: -28px;
-  left: 50%;
-}
-.search-bar {
-  position: relative;
-  left: -50%;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .products-container {

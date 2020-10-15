@@ -11,6 +11,7 @@ const DropdownContainer = styled.div`
     padding: 17px 30px;
     border-top: 1px solid rgba(0,0,0,0.05);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    cursor: initial;
 `;
 
 const MenuList = styled.ul`
@@ -23,6 +24,7 @@ const MenuItem = styled.li`
     display:flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 `;
 
 const MenuImage = styled.div`

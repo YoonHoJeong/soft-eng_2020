@@ -5,7 +5,7 @@ import styled from "styled-components";
 import DropdownBar from "./DropdownBar";
 
 const HeaderContainer = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
 
   width: 100%;
@@ -40,13 +40,19 @@ const OtherDrinks = styled.div`
   height: 100%;
   width: fit-content;
 
-  display:flex;
+  display: flex;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Reviews = styled.div`
-  display:flex;
+  display: flex;
   align-items: center;
+  cursor: pointer;
+`;
+
+const SearchBarContainer = styled.div`
+  margin-left: auto;
 `;
 
 const Header = () => {
@@ -57,32 +63,33 @@ const Header = () => {
     // 마우스가 올라오면 술 카테고리 창이 나오고
     console.log("mouse over");
     setIsCategoryLoaded(true);
-  }
+  };
 
   const handleLeave = (e) => {
     // 마우스가 카테고리 창에서 벗어나면 카테고리 창이 없어지도록
     setTimeout(() => {
       console.log("mouse leave");
       setIsCategoryLoaded(false);
-    }, 200)
-    
-  }
-
+    }, 200);
+  };
 
   return (
     <HeaderContainer>
       <Link to="/">
-        <Logo>
-          ALLA
-        </Logo>
+        <Logo>ALLA</Logo>
       </Link>
 
       <Navigation>
-        <OtherDrinks onMouseEnter={handleOver} onMouseLeave={handleLeave}>other drinks
-          {isCategoryLoaded && <DropdownBar  onMouseEnter={handleOver}/>}
+        <OtherDrinks onMouseEnter={handleOver} onMouseLeave={handleLeave}>
+          other drinks
+          {isCategoryLoaded && <DropdownBar onMouseEnter={handleOver} />}
         </OtherDrinks>
         <Reviews>Reviews</Reviews>
       </Navigation>
+
+      <SearchBarContainer>
+        <SearchBar size="small" />
+      </SearchBarContainer>
     </HeaderContainer>
   );
 };

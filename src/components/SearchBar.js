@@ -4,8 +4,35 @@ import SearchIcon from "@material-ui/icons/Search";
 import { Link, useLocation } from "react-router-dom";
 import qs from "qs";
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 
-const SearchBar = () => {
+const SearchBarContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: ${(props) => (props.size === "small" ? "5px" : "10px")};
+  padding-left: ${(props) => (props.size === "small" ? "15px" : "23px")};
+
+  width: ${(props) => (props.size === "small" ? "28vw" : "38vw")};
+  max-width: 650px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 7px;
+
+  background-color: white;
+`;
+
+const SInput = styled.input`
+  border: none;
+  outline: none;
+
+  font-family: "NanumSquareRound";
+  font-size: ${(props) => (props.size === "small" ? "14px" : "17px")};
+  font-weight: 700;
+
+  width: 100%;
+`;
+
+const SearchBar = ({ size }) => {
   const location = useLocation();
   const [category, setCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,37 +59,23 @@ const SearchBar = () => {
     });
     setCategory(c);
     setSearchTerm(t);
-
   }, [location]);
 
   return (
-    <div
-      className="search-bar"
-    >
-      {/* <div className="search-bar__cate">
-        <select name="category" id="category" onChange={onChange}>
-          <option value="all">All</option>
-          {defaultCates.map((cate, index) => (
-            <option key={index} value={cate}>
-              {cate}
-            </option>
-          ))}
-        </select>
-      </div> */}
-      <div className="search-bar__input">
-        <input
-          name="searchTerm"
-          type="text"
-          onChange={onChange}
-          autoComplete="off"
-          value={searchTerm}
-        />
+    <SearchBarContainer size={size}>
+      <SInput
+        name="searchTerm"
+        type="text"
+        onChange={onChange}
+        autoComplete="off"
+        value={searchTerm}
+        size={size}
+      />
 
-        <Link to={`/search?c=${category}&t=${searchTerm}`}>
-          <SearchIcon className="search-icon" />
-        </Link>
-      </div>
-    </div>
+      <Link to={`/search?c=${category}&t=${searchTerm}`}>
+        <SearchIcon className="search-icon" />
+      </Link>
+    </SearchBarContainer>
   );
 };
 

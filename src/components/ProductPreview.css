@@ -34,12 +34,12 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 5px;
+  padding: 0px 7px;
 }
 
 .preview-info {
   width: 100%;
   height: fit-content;
-  padding: 0px 5px;
 
   display: flex;
   flex-direction: column;
@@ -48,14 +48,14 @@
 }
 
 .preview-info .preview-title {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .preview-info .preview-subtitle {
-  font-size: 0.8em;
+  font-size: 11px;
   opacity: 0.6;
-  margin-top: 3px;
+  margin-top: 5px;
 }
 
 .product-rating {
