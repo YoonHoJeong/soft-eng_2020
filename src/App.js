@@ -6,6 +6,7 @@ import Home from "routes/Home";
 import Search from "routes/Search";
 import Product from "components/Product";
 import GlobalStyles from "components/GlobalStyles";
+import Category from "routes/Category";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/product/:id">
             <Product />
+          </Route>
+          <Route exact path="/category/:drink_type">
+            <Category />
           </Route>
         </Switch>
       </Router>

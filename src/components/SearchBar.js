@@ -3,7 +3,6 @@ import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link, useLocation } from "react-router-dom";
 import qs from "qs";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const SearchBarContainer = styled.div`
@@ -37,8 +36,6 @@ const SearchBar = ({ size }) => {
   const [category, setCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // const defaultCates = useSelector((state) => state.categories);
-
   const onChange = (e) => {
     const {
       target: { name },
@@ -68,7 +65,7 @@ const SearchBar = ({ size }) => {
         type="text"
         onChange={onChange}
         autoComplete="off"
-        value={searchTerm}
+        placeholder={searchTerm}
         size={size}
       />
 

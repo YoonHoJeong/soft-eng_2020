@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SearchBar from "components/SearchBar";
 import styled from "styled-components";
 import DropdownBar from "./DropdownBar";
@@ -19,6 +19,8 @@ const HeaderContainer = styled.div`
   align-items: center;
   background-color: white;
   font-family: "NanumSquareRound", sans-serif;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 `;
 
 const Logo = styled.div`
@@ -56,19 +58,16 @@ const SearchBarContainer = styled.div`
 `;
 
 const Header = () => {
-  const location = useLocation();
   const [isCategoryLoaded, setIsCategoryLoaded] = useState(false);
 
   const handleOver = (e) => {
     // 마우스가 올라오면 술 카테고리 창이 나오고
-    console.log("mouse over");
     setIsCategoryLoaded(true);
   };
 
   const handleLeave = (e) => {
     // 마우스가 카테고리 창에서 벗어나면 카테고리 창이 없어지도록
     setTimeout(() => {
-      console.log("mouse leave");
       setIsCategoryLoaded(false);
     }, 200);
   };

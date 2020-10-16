@@ -6,7 +6,7 @@ import { dbService } from "fbase";
 
 import SearchBar from "components/SearchBar";
 import ProductPreview from "components/ProductPreview";
-import ReviewPreview from "components/ReviewPreview";
+// import ReviewPreview from "components/ReviewPreview";
 import Product from "components/Product";
 import Loader from "components/Loader";
 
@@ -26,14 +26,14 @@ const Search = () => {
 
   const [categoryList, setCategoryList] = useState([]);
 
-  const onChangeCategory = ({ target: { checked, name } }) => {
-    if (checked) {
-      setCategoryList(categoryList.concat(name));
-    } else {
-      setCategoryList(categoryList.filter((category) => category !== name));
-    }
-    console.log(categoryList);
-  };
+  // const onChangeCategory = ({ target: { checked, name } }) => {
+  //   if (checked) {
+  //     setCategoryList(categoryList.concat(name));
+  //   } else {
+  //     setCategoryList(categoryList.filter((category) => category !== name));
+  //   }
+  //   console.log(categoryList);
+  // };
 
   const handleBSToggle = (flag) => {
     setBsFlag(flag);
@@ -74,14 +74,14 @@ const Search = () => {
       ) : (
         <>
           <div className="search-bar-container">
-            <SearchBar className="search-bar"/>
+            <SearchBar className="search-bar" />
           </div>
-          
+
           <div className="products-container">
-            <h1 className="container-title">
-              검색 결과
-            </h1>
-            <span className="container-subtitle">총 {products.length}건의 {text} 결과</span>
+            <h1 className="container-title">검색 결과</h1>
+            <span className="container-subtitle">
+              총 {products.length}건의 {text} 결과
+            </span>
             <div className="products search-result">
               {products.map((product) => (
                 <ProductPreview
