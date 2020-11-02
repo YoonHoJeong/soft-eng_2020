@@ -45,16 +45,19 @@
 }
 
 .products {
-  display: flex;
+  display: grid;
   margin-top: 10px;
   padding: 15px 50px;
   width: 100%;
-
-  justify-content: center;
+  grid-auto-rows: auto;
+  grid-gap: 36px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 .search-result {
   background-color: rgba(80, 108, 256, 0.2);
   /* border-radius: 5px; */
+  display: flex;
+  justify-content: center;
 }
 
 .backscreen {

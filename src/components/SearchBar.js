@@ -69,7 +69,11 @@ const SearchBar = ({ size }) => {
         size={size}
       />
 
-      <Link to={`/search?c=${category}&t=${searchTerm}`}>
+      <Link
+        to={`/search?c=${category ? category : ""}&t=${
+          searchTerm ? searchTerm : ""
+        }`}
+      >
         <SearchIcon className="search-icon" />
       </Link>
     </SearchBarContainer>

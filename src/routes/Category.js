@@ -3,12 +3,15 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 import { drinkApi } from "api";
-import ProductPreview from "components/ProductPreview";
+import ProductPreviewList from "components/ProductPreviewList";
+
+import "./Slider.css";
+
+import adImage from "images/ads/soju/jinro_rain.jpg";
 
 const CategoryContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: blue;
 
   background-color: white;
   width: 100%;
@@ -19,35 +22,52 @@ const CategoryContainer = styled.div`
 `;
 
 const DrinkList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+
+  padding: 0px 50px;
+
+  list-style: none;
+  display: grid;
+  grid-gap: 36px;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  justify-items: center;
+`;
+
+const AdImage = styled.div`
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+
+  margin: 0px auto;
+
+  background-image: url("${(props) => props.image}");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 const Category = () => {
   const params = useParams();
 
-  const [drinkType, setDrinkType] = useState("");
+  const [category, setCategory] = useState("");
 
   const [drinks, setDrinks] = useState([]);
 
   const getDrinks = async () => {
-    const { data } = await drinkApi.getSoju();
+    const { data } = await drinkApi.getSoju(params["category_title"]);
     setDrinks(data);
-    console.log(data);
   };
 
   useEffect(() => {
-    setDrinkType(params["drink_type"]);
+    setCategory(params["category_title"]);
     getDrinks();
-  }, []);
+  }, [params]);
 
   return (
     <CategoryContainer>
-      <DrinkList>
-        {drinks.map((drink) => (
-          <ProductPreview product={drink}></ProductPreview>
-        ))}
-      </DrinkList>
+      <AdImage image={adImage} />
+      <ProductPreviewList products={drinks} />
     </CategoryContainer>
   );
 };

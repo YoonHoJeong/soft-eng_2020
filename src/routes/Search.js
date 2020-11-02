@@ -6,9 +6,12 @@ import { dbService } from "fbase";
 
 import SearchBar from "components/SearchBar";
 import ProductPreview from "components/ProductPreview";
+import ProductPreviewList from "components/ProductPreviewList";
+
 // import ReviewPreview from "components/ReviewPreview";
 import Product from "components/Product";
 import Loader from "components/Loader";
+import { drinkApi } from "api";
 
 const Search = () => {
   const location = useLocation();
@@ -26,14 +29,7 @@ const Search = () => {
 
   const [categoryList, setCategoryList] = useState([]);
 
-  // const onChangeCategory = ({ target: { checked, name } }) => {
-  //   if (checked) {
-  //     setCategoryList(categoryList.concat(name));
-  //   } else {
-  //     setCategoryList(categoryList.filter((category) => category !== name));
-  //   }
-  //   console.log(categoryList);
-  // };
+  const getSearch = drinkApi.getSearch;
 
   const handleBSToggle = (flag) => {
     setBsFlag(flag);
@@ -49,22 +45,24 @@ const Search = () => {
     const { c, t } = qs.parse(location.search, { ignoreQueryPrefix: true });
     setCategory(c);
     setText(t);
+    setProducts(getSearch(text));
+    setIsLoading(false);
 
-    dbService.collection("product").onSnapshot((snapshot) => {
-      const productList = snapshot.docs.map((doc, index) => ({
-        id: index,
-        ...doc.data(),
-      }));
-      setProducts(productList);
-    });
-    dbService.collection("review").onSnapshot((snapshot) => {
-      const reviewList = snapshot.docs.map((doc, index) => ({
-        id: index,
-        ...doc.data(),
-      }));
-      setReviews(reviewList);
-      setIsLoading(false);
-    });
+    // dbService.collection("product").onSnapshot((snapshot) => {
+    //   const productList = snapshot.docs.map((doc, index) => ({
+    //     id: index,
+    //     ...doc.data(),
+    //   }));
+    //   setProducts(productList);
+    // });
+    // dbService.collection("review").onSnapshot((snapshot) => {
+    //   const reviewList = snapshot.docs.map((doc, index) => ({
+    //     id: index,
+    //     ...doc.data(),
+    //   }));
+    //   setReviews(reviewList);
+    //   setIsLoading(false);
+    // });
   }, [location]);
 
   return (

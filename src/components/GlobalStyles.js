@@ -8,6 +8,10 @@ const GlobalStyles = createGlobalStyle`
         color:inherit;
     }
     *{
-        box-sizing:boerder-box;
-}`;
+        box-sizing:border-box;
+    }
+    body{
+        font-family: "NanumSquare", sans-serif;
+    }
+`;
 export default GlobalStyles;

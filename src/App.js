@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/product/:id">
             <Product />
           </Route>
-          <Route exact path="/category/:drink_type">
+          <Route exact path="/category/:category_title">
             <Category />
           </Route>
         </Switch>

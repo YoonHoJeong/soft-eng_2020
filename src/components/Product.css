@@ -33,44 +33,47 @@
 
 .product-info {
   width: 300px;
-  padding: 20px;
+  padding: 40px 30px;
   border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .product-info .product-title {
-  font-size: 1.1em;
-  font-weight: 600;
+  font-size: 1.2em;
+  font-weight: 700;
   margin-bottom: 3px;
 }
 .product-info .product-subtitle {
-  font-size: 0.9em;
+  font-size: 0.8em;
   opacity: 0.5;
-  margin-bottom: 20px;
+  padding-left: 5px;
 }
 
 .product button {
   position: absolute;
-  top: 25px;
-  right: 25px;
+  top: 15px;
+  right: 15px;
   width: 20px;
   height: 20px;
-
+  background-color: white;
+  outline: none;
   border: none;
+  font-size: 20px;
 }
 .product button:hover {
   cursor: pointer;
 }
 
 .reviews {
+  margin-top: 40px;
 }
 
 .reviews h4 {
-  font-weight: 600;
+  font-weight: 700;
   width: 100%;
 }
 
 .reviews .review-item {
-  margin-bottom: 18px;
+  margin-bottom: 6px;
   padding: 5px;
   border-radius: 5px;
   width: 100%;
