@@ -5,8 +5,6 @@ import styled from "styled-components";
 import { drinkApi } from "api";
 import ProductPreviewList from "components/ProductPreviewList";
 
-import "./Slider.css";
-
 import adImage from "images/ads/soju/jinro_rain.jpg";
 
 const CategoryContainer = styled.div`
@@ -66,7 +64,7 @@ const Category = () => {
 
   return (
     <CategoryContainer>
-      <AdImage image={adImage} />
+      {/* <AdImage image={adImage} /> */}
       <ProductPreviewList products={drinks} />
     </CategoryContainer>
   );
