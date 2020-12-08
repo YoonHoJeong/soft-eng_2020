@@ -3,10 +3,10 @@ import styled from "styled-components";
 import ProductPreview from "./ProductPreview";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { useSelector } from "react-redux";
 
 const itemLength = 230;
 const slideCount = 4;
-const wrapperPadding = 50;
 
 const SliderWrapper = styled.div`
   position: relative;
@@ -19,14 +19,19 @@ const SliderWrapper = styled.div`
 const SliderShowArea = styled.div`
   position: relative;
 
+  background-color: white;
+
   width: 100%;
   height: 100%;
   overflow: hidden;
+
+  display: flex;
+  align-items: center;
 `;
 const Slider = styled.ul`
   position: absolute;
-  top: 0;
-  left: ${wrapperPadding};
+  // top: 0;
+  left: 0;
   width: ${(props) => props.count * (itemLength + 20) - 20}px;
 
   transition: left 0.5s;
@@ -44,10 +49,12 @@ const Button = styled.button`
   ${(props) => (props.name === "prev" ? "left:-60px;" : "right:-60px;")}
   top: 90px;
 
+  visibility: ${(props) => (props.count < 4 ? "hidden;" : "visible;")}
+
   width: 50px;
   height: 50px;
 
-  background-color: white;
+  background-color: transparent;
   border-radius: 50%;
   border: none;
 
@@ -60,9 +67,10 @@ const Button = styled.button`
   }
 `;
 
-const ProductPreviewList = ({ products }) => {
+const ProductPreviewList = ({ products, isSlider = true }) => {
   const [productCount, setProductCount] = useState();
   const [currentIdx, setCurrentIdx] = useState(0);
+  const config = useSelector((store) => store.config);
   const slider = useRef();
 
   const moveSlide = (num) => {
@@ -73,7 +81,7 @@ const ProductPreviewList = ({ products }) => {
   const handleClickPrev = (e) => {
     moveSlide(currentIdx - 1);
     if (currentIdx <= 0) {
-      moveSlide(0);
+      moveSlide(productCount - 4);
     }
   };
   const handleClickNext = (e) => {
@@ -89,12 +97,16 @@ const ProductPreviewList = ({ products }) => {
 
   return (
     <SliderWrapper>
-      <Button name="prev" onClick={handleClickPrev}>
-        <ChevronLeftIcon fontSize="large" />
-      </Button>
-      <Button name="next" onClick={handleClickNext}>
-        <ChevronRightIcon fontSize="large" />
-      </Button>
+      {isSlider && (
+        <>
+          <Button name="prev" onClick={handleClickPrev} count={products.length}>
+            <ChevronLeftIcon fontSize="large" />
+          </Button>
+          <Button name="next" onClick={handleClickNext} count={products.length}>
+            <ChevronRightIcon fontSize="large" />
+          </Button>
+        </>
+      )}
       <SliderShowArea>
         <Slider ref={slider} count={productCount}>
           {products.map((product) => (

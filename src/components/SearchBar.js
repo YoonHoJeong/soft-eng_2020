@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./SearchBar.css";
 import SearchIcon from "@material-ui/icons/Search";
 import { Link, useLocation } from "react-router-dom";
 import qs from "qs";
@@ -12,7 +11,7 @@ const SearchBarContainer = styled.div`
   padding-left: ${(props) => (props.size === "small" ? "15px" : "23px")};
 
   width: ${(props) => (props.size === "small" ? "28vw" : "38vw")};
-  max-width: 650px;
+  max-width: 400px;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
   border-radius: 7px;
@@ -25,7 +24,7 @@ const SInput = styled.input`
   outline: none;
 
   font-family: "NanumSquareRound";
-  font-size: ${(props) => (props.size === "small" ? "14px" : "17px")};
+  font-size: ${(props) => (props.size === "small" ? "17px" : "20px")};
   font-weight: 700;
 
   width: 100%;

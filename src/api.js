@@ -1,7 +1,7 @@
 import axios from "axios";
 import image from "images/처음처럼.jpg";
 
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = "http://3.35.139.156:6974/";
 
 const api = axios.create({
   baseURL: BASE_URL,
@@ -10,76 +10,80 @@ const api = axios.create({
 const sampleData = [
   {
     id: 0,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 1,
+    ABV: 5.5,
   },
   {
     id: 1,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 2.2,
+    ABV: 5.5,
   },
   {
     id: 2,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 1.2,
+    ABV: 5.5,
   },
   {
     id: 3,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 4.3,
+    ABV: 5.5,
   },
   {
     id: 4,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 3.3,
+    ABV: 5.5,
   },
   {
     id: 5,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 4.4,
+    ABV: 16.9,
   },
   {
     id: 6,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 2.2,
+    ABV: 16.9,
   },
   {
     id: 7,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 4.5,
+    ABV: 16.9,
   },
   {
     id: 8,
-    title: "처음처럼",
+    name: "처음처럼",
     image: image,
     category: "소주",
-    degree: 16.9,
+    rating: 4.5,
+    ABV: 16.9,
   },
 ];
 
 export const drinkApi = {
-  getSoju: (category) =>
-    api.get("/", {
-      params: {
-        category: category,
-      },
-    }),
+  getCategory: (category) => api.get(`drink/items/${category}`),
   getSearch: (query) => sampleData,
   getBest: () => sampleData,
 };

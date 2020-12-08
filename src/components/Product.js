@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Product.css";
 import styled from "styled-components";
+import CloseIcon from "@material-ui/icons/Close";
 
 const BackScreen = styled.div`
   position: fixed;
@@ -42,8 +43,6 @@ const Product = ({ product, onBGToggle }) => {
     }, [ref]);
   }
 
-  const [rating, setRating] = useState(0);
-
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
 
@@ -54,35 +53,22 @@ const Product = ({ product, onBGToggle }) => {
     backgroundRepeat: "no-repeat",
   };
 
-  useEffect(() => {
-    /* 평점 계산 */
-    // let ratingSum = 0;
-    // product.ratings.forEach((rating) => {
-    //   ratingSum += rating;
-    // });
-    // ratingSum /= product.ratings.length;
-    // setRating(Math.floor(ratingSum * 10) / 10);
-  }, []);
-
   return (
     <BackScreen>
       <div ref={wrapperRef} className="product">
         <div className="product-image-container" style={bgStyle}>
           <div className="tags">
-            {/* {product.tags.map((tag, index) => (
-            <span key={index} className="tag">
-              #{tag}
-            </span>
-          ))} */}
-            tags
+            <span className="tag">#태그</span>
+            <span className="tag">#태그</span>
+            <span className="tag">#태그</span>
           </div>
         </div>
 
         <div className="product-info">
-          <h4 className="product-title">{product.title}</h4>
+          <h4 className="product-title">{product.name}</h4>
           <div className="product-subtitle">
-            {product.type} · {product.degree}도 · 점
-            <div className="product-stars">{}</div>
+            {product.ABV}도 · {product.rating}점
+            <div className="product-stars"></div>
           </div>
 
           <ul className="reviews">
@@ -115,7 +101,7 @@ const Product = ({ product, onBGToggle }) => {
             onBGToggle(false);
           }}
         >
-          x
+          <CloseIcon />
         </button>
       </div>
     </BackScreen>

@@ -21,10 +21,14 @@ body {
 
 body {
   font-family: "NanumSquareRound", sans-serif;
-  background-color: rgba(0, 0, 0, 0.05);
+  /* background-color: rgba(0, 0, 0, 0); */
+  background-color: white;
 }
 
 .app {
-  width: 100%;
+  width: 1140px;
   height: 100vh;
+  padding-top: 80px;
+
+  margin: 0px auto;
 }

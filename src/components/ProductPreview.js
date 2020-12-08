@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import MessageIcon from "@material-ui/icons/Message";
 import StarIcon from "@material-ui/icons/Star";
 import styled from "styled-components";
 import Product from "./Product";
+import { useSelector } from "react-redux";
 
-const PreviewContainer = styled.div``;
+const PreviewContainer = styled.div`
+  width: fit-content;
+`;
 
 const InfoContainer = styled.div`
   display: flex;
@@ -38,26 +40,28 @@ const PreviewSubtitle = styled.h3`
 
 const Stats = styled.div`
   display: flex;
-  font-size: 0.8em;
+  font-size: 14px;
 `;
-const StatsComment = styled.div`
-  display: flex;
-  align-items: center;
-`;
+
 const StatsRating = styled.div`
   display: flex;
   align-items: center;
   margin-left: 3px;
+`;
+const StatData = styled.span`
+  margin-left: 1px;
 `;
 
 const DrinkThumbnail = styled.div`
   width: 230px;
   height: 230px;
 
+  background-color: white;
+
   background-image: url("${(props) => props.image}");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
 
   border-radius: 8px;
 
@@ -72,6 +76,7 @@ const DrinkThumbnail = styled.div`
 
 const ProductPreview = ({ product }) => {
   const [bgOn, setbgOn] = useState(false);
+  const config = useSelector((store) => store.config);
 
   const handleClick = () => {
     setbgOn(!bgOn);
@@ -90,27 +95,17 @@ const ProductPreview = ({ product }) => {
         ></DrinkThumbnail>
         <InfoContainer>
           <PreviewInfo>
-            <PreviewTitle>{product.title}</PreviewTitle>
-            <PreviewSubtitle>
-              {product.category} / {product.degree}도
-            </PreviewSubtitle>
+            <PreviewTitle>{product.name}</PreviewTitle>
+            <PreviewSubtitle>{product.ABV}도</PreviewSubtitle>
           </PreviewInfo>
           <Stats>
-            <StatsComment>
-              <MessageIcon
-                fontSize="small"
-                className="grey icon"
-                onMouseOver={handleHover}
-              />
-              <span>0</span>
-            </StatsComment>
             <StatsRating>
               <StarIcon
                 fontSize="small"
                 className="grey icon"
                 onMouseOver={handleHover}
               />
-              <span>123</span>
+              <StatData>{product.rating}</StatData>
             </StatsRating>
           </Stats>
         </InfoContainer>

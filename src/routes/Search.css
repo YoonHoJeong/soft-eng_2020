@@ -1,18 +1,3 @@
-.search {
-  position: relative;
-
-  background-color: white;
-  width: 100%;
-  height: 100%;
-
-  margin-top: 160px;
-  padding-top: 50px;
-
-  display: flex;
-  flex-direction: column;
-  font-family: "NanumSquareRound", sans-serif;
-}
-
 .search-bar-container {
   position: absolute;
   top: -28px;
@@ -31,6 +16,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "NanumSquare", sans-serif;
 }
 
 .container-title {
@@ -47,17 +33,20 @@
 .products {
   display: grid;
   margin-top: 10px;
-  padding: 15px 50px;
+  padding: 30px 50px;
   width: 100%;
   grid-auto-rows: auto;
   grid-gap: 36px;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 .search-result {
-  background-color: rgba(80, 108, 256, 0.2);
+  background-color: #132743;
+  width: 100vw;
+  height: 350px;
   /* border-radius: 5px; */
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .backscreen {
