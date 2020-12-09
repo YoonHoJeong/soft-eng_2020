@@ -48,52 +48,54 @@ const SearchResult = ({ drinks }) => {
 
   const adjustFilter = (filters) => {
     let tmpDrinks = [];
+    let tmpDrinksRating = [];
+    let tmpDrinksABV = [];
 
     if (filters.length) {
       filters.forEach((filter) => {
         switch (filter) {
           case 0:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksABV = tmpDrinksABV.concat(
               drinks.filter((drink) => drink.ABV >= 0 && drink.ABV < 10)
             );
             break;
           case 1:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksABV = tmpDrinksABV.concat(
               drinks.filter((drink) => drink.ABV <= 10)
             );
             break;
           case 2:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksABV = tmpDrinksABV.concat(
               drinks.filter((drink) => drink.ABV > 10)
             );
             break;
           case 3:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksRating = tmpDrinksRating.concat(
               drinks.filter((drink) => drink.rating >= 0 && drink.rating < 1)
             );
             break;
           case 4:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksRating = tmpDrinksRating.concat(
               drinks.filter((drink) => drink.rating >= 1 && drink.rating < 2)
             );
             break;
           case 5:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksRating = tmpDrinksRating.concat(
               drinks.filter((drink) => drink.rating >= 2 && drink.rating < 3)
             );
             break;
           case 6:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksRating = tmpDrinksRating.concat(
               drinks.filter((drink) => drink.rating >= 3 && drink.rating < 4)
             );
             break;
           case 7:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksRating = tmpDrinksRating.concat(
               drinks.filter((drink) => drink.rating >= 4 && drink.rating < 5)
             );
             break;
           case 8:
-            tmpDrinks = tmpDrinks.concat(
+            tmpDrinksRating = tmpDrinksRating.concat(
               drinks.filter((drink) => drink.rating >= 5)
             );
             break;
@@ -105,7 +107,21 @@ const SearchResult = ({ drinks }) => {
     } else {
       tmpDrinks = drinks;
     }
-    setShowDrinks(tmpDrinks);
+    // const filteredArray = array1.filter(value => array2.includes(value));
+    const ratings = [3, 4, 5, 6, 7, 8];
+    const ABVs = [1, 2];
+
+    console.log();
+    if (filters.filter((filter) => ABVs.includes(filter)).length === 0) {
+      tmpDrinksABV = drinks;
+    }
+    if (filters.filter((filter) => ratings.includes(filter)).length === 0) {
+      tmpDrinksRating = drinks;
+    }
+    // setShowDrinks(tmpDrinks);
+    setShowDrinks(
+      tmpDrinksABV.filter((drink) => tmpDrinksRating.includes(drink))
+    );
   };
 
   return (

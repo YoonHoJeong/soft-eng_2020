@@ -9,7 +9,6 @@ const GlobalStyles = createGlobalStyle`
     }
     *{
         box-sizing:border-box;
-        font-family: "NanumSquare", sans-serif;
     }
     body{
         font-family: "NanumSquare", sans-serif;

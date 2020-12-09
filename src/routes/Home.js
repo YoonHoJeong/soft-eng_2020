@@ -153,6 +153,13 @@ const Home = () => {
     setIsLoading(false);
   };
 
+  const changeImage = (choices) => {
+    const randomElement = choices[Math.floor(Math.random() * choices?.length)];
+    randomResult.current.style.backgroundImage = `url(${randomElement["image"]})`;
+    randomResultTitle.current.innerText = randomElement.name;
+    randomContainer.current.style.backgroundImage = `url${randomElement["image"]})`;
+  };
+
   const handleRandom = () => {
     const choices = products?.concat(recommend);
 
@@ -160,36 +167,19 @@ const Home = () => {
       console.log();
       let cnt = 0;
       let intervalId = setInterval(() => {
-        const randomElement =
-          choices[Math.floor(Math.random() * choices?.length)];
-        randomResult.current.style.backgroundImage = `url(${randomElement["image"]})`;
-        randomResultTitle.current.innerText = randomElement.name;
-        randomContainer.current.style.backgroundImage = `url${randomElement["image"]})`;
+        changeImage(choices);
         if (cnt++ >= 15) {
           clearInterval(intervalId);
           cnt = 0;
           intervalId = setInterval(() => {
-            const randomElement =
-              choices[Math.floor(Math.random() * choices?.length)];
-            randomResult.current.style.backgroundImage = `url(${randomElement["image"]})`;
-            randomResultTitle.current.innerText = randomElement.name;
-            randomContainer.current.style.backgroundImage = `url${randomElement["image"]})`;
+            changeImage(choices);
             if (cnt++ >= 3) {
               clearInterval(intervalId);
               cnt = 0;
               randomResult.current.style.transition = "all 1s";
-              intervalId = setInterval(() => {
-                const randomElement =
-                  choices[Math.floor(Math.random() * choices?.length)];
-                randomResult.current.style.backgroundImage = `url(${randomElement["image"]})`;
-                randomResultTitle.current.innerText = randomElement.name;
-                randomContainer.current.style.backgroundImage = `url${randomElement["image"]})`;
-                if (cnt++ >= 1) {
-                  cnt = 0;
-                  clearInterval(intervalId);
-                  randomResult.current.style.transition = "all 0.2s";
-                }
-              }, 1100);
+              changeImage(choices);
+
+              randomResult.current.style.transition = "all 0.2s";
             }
           }, 800);
         }

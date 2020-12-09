@@ -113,7 +113,6 @@ const Search = () => {
             <span className="container-subtitle">
               총 {showProducts.length}건의 {text} 결과
             </span>
-
             <div className="products search-result">
               {showProducts.length ? (
                 showProducts.map((product, idx) => (
