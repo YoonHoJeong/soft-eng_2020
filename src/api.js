@@ -1,7 +1,7 @@
 import axios from "axios";
 import image from "images/처음처럼.jpg";
 
-const BASE_URL = "http://3.35.139.156:6974/";
+const BASE_URL = "http://3.35.139.156:8000/";
 
 const api = axios.create({
   baseURL: BASE_URL,

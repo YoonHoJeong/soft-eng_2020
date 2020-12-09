@@ -121,7 +121,7 @@ const Search = () => {
                   </PreviewContainer>
                 ))
               ) : (
-                <NoResult>"{text}"에 대한검색 결과가 없습니다.</NoResult>
+                <NoResult>"{text}"에 대한 검색 결과가 없습니다.</NoResult>
               )}
               {/* <ProductPreviewList products={showProducts} /> */}
             </div>

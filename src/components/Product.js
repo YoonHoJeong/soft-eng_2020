@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Product.css";
 import styled from "styled-components";
 import CloseIcon from "@material-ui/icons/Close";
+import { Link } from "react-router-dom";
 
 const BackScreen = styled.div`
   position: fixed;
@@ -58,9 +59,15 @@ const Product = ({ product, onBGToggle }) => {
       <div ref={wrapperRef} className="product">
         <div className="product-image-container" style={bgStyle}>
           <div className="tags">
-            <span className="tag">#태그</span>
-            <span className="tag">#태그</span>
-            <span className="tag">#태그</span>
+            <Link to={`/search?c=&t=태그`}>
+              <span className="tag">#태그</span>
+            </Link>
+            <Link to={`/search?c=&t=태그`}>
+              <span className="tag">#태그</span>
+            </Link>
+            <Link to={`/search?c=&t=태그`}>
+              <span className="tag">#태그</span>
+            </Link>
           </div>
         </div>
 
