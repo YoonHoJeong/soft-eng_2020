@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/soft-eng_2020/static/css/main.b093fe62.chunk.css",
+    "main.js": "/soft-eng_2020/static/js/main.e045fd1a.chunk.js",
+    "main.js.map": "/soft-eng_2020/static/js/main.e045fd1a.chunk.js.map",
+    "runtime-main.js": "/soft-eng_2020/static/js/runtime-main.7c870002.js",
+    "runtime-main.js.map": "/soft-eng_2020/static/js/runtime-main.7c870002.js.map",
+    "static/js/2.cbe594e8.chunk.js": "/soft-eng_2020/static/js/2.cbe594e8.chunk.js",
+    "static/js/2.cbe594e8.chunk.js.map": "/soft-eng_2020/static/js/2.cbe594e8.chunk.js.map",
+    "index.html": "/soft-eng_2020/index.html",
+    "precache-manifest.b09c7a7595c0815432f062cdc1f0c405.js": "/soft-eng_2020/precache-manifest.b09c7a7595c0815432f062cdc1f0c405.js",
+    "service-worker.js": "/soft-eng_2020/service-worker.js",
+    "static/css/main.b093fe62.chunk.css.map": "/soft-eng_2020/static/css/main.b093fe62.chunk.css.map",
+    "static/js/2.cbe594e8.chunk.js.LICENSE.txt": "/soft-eng_2020/static/js/2.cbe594e8.chunk.js.LICENSE.txt",
+    "static/media/beer.jpg": "/soft-eng_2020/static/media/beer.b5c0417b.jpg",
+    "static/media/main.jpg": "/soft-eng_2020/static/media/main.7f6ffa25.jpg",
+    "static/media/main2.jpg": "/soft-eng_2020/static/media/main2.6ebf1ec5.jpg",
+    "static/media/makgeolli.jpg": "/soft-eng_2020/static/media/makgeolli.9e631dbb.jpg",
+    "static/media/soju.jpg": "/soft-eng_2020/static/media/soju.dd829bee.jpg",
+    "static/media/메뉴_막걸리.jpg": "/soft-eng_2020/static/media/메뉴_막걸리.5814dc90.jpg",
+    "static/media/메뉴_맥주.jpg": "/soft-eng_2020/static/media/메뉴_맥주.f50fd706.jpg",
+    "static/media/메뉴_소주.jpg": "/soft-eng_2020/static/media/메뉴_소주.2cdbe1f3.jpg",
+    "static/media/처음처럼.jpg": "/soft-eng_2020/static/media/처음처럼.d8fb8407.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c870002.js",
+    "static/js/2.cbe594e8.chunk.js",
+    "static/css/main.b093fe62.chunk.css",
+    "static/js/main.e045fd1a.chunk.js"
+  ]
+}
